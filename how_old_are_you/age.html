@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>How Old Are You?</title>
+    <script src="js/jquery-1.6.3.min.js"></script>
+    <script>
+
+    $(document).ready(function(){
+            var mod_date;
+            $('#Bday').submit(function(event){
+                var date = $('#birthdate').val();
+                removeChar(date);
+                //event.preventDefault();
+
+            });
+
+    });    //end document ready
+
+
+
+
+
+        function removeChar(date){
+            alert("The date is coming through:" + date);
+            var slashREGEX = /\//ig;                //  Matches /
+            var dashREGEX = /\-/ig;                 // Matches -
+            var spaceREGEX = /\s/ig;                // Matches whitespace
+
+
+            var mod_date;
+
+            if(date.match(slashREGEX)) {
+                alert('valid');
+                mod_date = date.replace(slashREGEX, "");
+
+            }
+            else if(date.match(dashREGEX)) {
+                alert('valid');
+                mod_date = date.replace(dashREGEX, "");
+
+            }
+            else if(date.match(spaceREGEX)){
+                alert('valid');
+                mod_date = date.replace(spaceREGEX,"");
+            }
+            else
+            {
+                alert('invalid');
+            }
+            alert("reading end of removeChar");
+            event.preventDefault();
+            calcAge(mod_date);
+
+        }//end removeChar()
+
+var d = new Date();
+    console.log(d);
+    d.getFullYear(1970);
+    console.log(d);
+    d.getMilliseconds(1970);
+    console.log(d);
+
+
+
+/*
+function calcAge(mod_date){
+//BREAK APART BIRTHDATE INTO COMPONENT MONTH, DAY, YEAR
+    var birthdateMonth = mod_date.slice(0,2);
+    var birthdateDay = mod_date.slice(2,4);
+    var birthdateYear = mod_date.slice(4);
+
+//EXTRACT DAY, MONTH, YEAR FROM JQUERY DATE OBJECT
+    var dateNow = new Date();                       //jQuery date object consisting of day of week, month, day of month ,year , time
+    var monthNow = dateNow.getMonth()+1;            //month number (added 1 since month is an array starting at index 0)
+    var dayNow = dateNow.getDate();                 //day of month (no zeros preceding number)
+    var yearNow = dateNow.getFullYear();            //year in xxxx format
+
+//DETERMINE NUMBER OF LEAP YEARS BETWEEN NOW AND BIRTHDATE
+    var numLeapYears;           //number of leap years between the two dates
+    var yearTotal;               //total number of years between the two dates
+    var numNonLeapYears;        //number of non-leap years between the two dates
+    var numMonthsElapsedBirthYear;    //number of months elapsed after birthday in birth year
+
+
+    if((birthdateYear % 4) === 0){                //if ==0 then start on a leap year
+
+
+        numLeapYears = Math.floor(((yearNow - birthdateYear)/4) + 1);       //number of leap years between the two dates
+        yearTotal = (yearNow - birthdateYear) -1;   //subtracted 1 to exclude birth year since it was (in most cases) not completed as a full year
+        numNonLeapYears = yearTotal - numLeapYears; //number of non leap years between the two dates
+        numMonthsElapsedBirthYear = 12 - birthdateMonth;
+        }
+        alert("it's a leap year");
+        alert("Num of leap Years:" + numNonLeapYears);
+
+    }
+    else{
+        alert('it is not a leap year');
+        numLeapYears = Math.floor((yearNow - birthdateYear)/4);
+        alert("Num of leap Years:" + numLeapYears);
+    }
+
+
+    $('#age').text("You are: " + mod_date + " years old.");
+}
+*/
+
+
+</script>
+</head>
+<body>
+
+
+<form  id="Bday">
+    <label for="birthdate"></label>
+    <input type="text" id="birthdate">
+    <input type="submit" value="Go">
+    <label id="age"></label>
+
+
+</form>
+
+</body>
+</html>
