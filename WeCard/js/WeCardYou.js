@@ -14,32 +14,12 @@ $(document).ready(function(){
         birthYear();
     });
     $('#actionButton').click(function(){
-
         calcAge();
-
+    });
+    $('#resetIt').click(function(){
+        $('p').empty();
     });
 
-
-
-
-
-
-
-
-
-
-
-function getTodayDate(){
-    //get today's year, month, day
-    var todayYear = new Date().getFullYear();
-    var todayMonth = new Date().getMonth() + 1;     //add 1 because January starts with index 0.
-    var todayDay = new Date().getDate();
-    console.log(todayYear);
-    console.log(todayMonth);
-    console.log(todayDay);
-
-
-}//end getTodayDate()
 
 //function to get month value from form
 function birthMonth(){
@@ -123,12 +103,12 @@ function calcAge(){
 
     //output appropriate message
     if(flag === 1){
-        message = "Age 21 or over."
-        $('p').text(message);
+        message = "Age 21 or over.";
+        $('.okay').text(message);
     }
     else{
         message = "Below age 21."
-        $('p').text(message);
+        $('.barred').text(message);
     }
 
     }//end function calcAge()

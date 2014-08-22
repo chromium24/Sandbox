@@ -5,8 +5,11 @@
     <title>We Card</title>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/WeCardYou.js"></script>
+    <link href="styles/main.css" rel="stylesheet">
 </head>
 <body>
+<div id="container">
+<img src="images/wecard.png" alt="We Card Sign" />
 <form>
     <label for="month">Month</label>
     <select id="month" class="monthy">
@@ -91,10 +94,11 @@
         <option value="1979">1979 and earlier</option>
 
     </select>
-    <input type="button" value = "Submit" id="actionButton" />
-    <p></p>
+    <input type="button" value = "Submit" id="actionButton" /><input type="reset" id="resetIt">
+    <p class="okay"></p><!--output message from .js file when person is above 21-->
+    <p class="barred"></p><!--output message from .js file when person is below 21-->
 
 </form>
-
+</div><!--end container-->
 </body>
 </html>
