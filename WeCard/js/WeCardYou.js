@@ -67,7 +67,10 @@ function calcAge(){
     //Initialize message as empty string. Will provide user with result of age calculation
     var message = '';
 
-    //call functions and assign variables to their returned values
+    //Initialize flag to 0. If flag value is -1, person is underage and send appropriate message. If flag is 1, person is drinking age and send appropriate message
+    var flag =0;
+
+    //call birthdate functions and assign variables to their returned values in order to do comparisons in if/else code blocks
    var mb = birthMonth();
    var db = birthDay();
    var yb = birthYear();
@@ -91,38 +94,42 @@ function calcAge(){
 
     //master if/else statements to determine if person is of drinking age
     if(yearDiff > 21){
-        message = "Above age 21. Alcohol may be served.";
-        $('p').text(message);
+        flag = 1;
     }
     else if(yearDiff < 21){
-        message = "Below age 21. Alcohol may NOT be served.";
-        $('p').text(message);
+        flag = -1;
     }
     else{                   //if year difference is 21, needed check difference in months and days to determine if person is truly 21 or over
         if(monthDiff < 0){
-            message = "Below age 21. Alcohol may NOT be served.";
-            $('p').text(message);
+            flag = -1;
         }else{
             if(monthDiff ===0){                 //if birth month matches today's month, check the difference in days
                 if(db > nowDay) {
-                    message = "Below age 21. Alcohol may NOT be served.";
-                    $('p').text(message);
+                    flag = -1;
                 }
                 else{
-                        message = "Age 21 or over.";
-                        $('p').text(message);
+                        flag = 1;
                     }
                 }//end day diff if months are equal
             else if(monthDiff > 0){
-                        message = "Age 21 or over.";
-                        $('p').text(message);
+                       flag = 1;
                 }
             else{
-                message = "Below age 21. Alcohol may NOT be served.";
-                $('p').text(message);
+                flag = -1;
+
                 }
             }//end monthDiff
         }//end if/else yearDiff
+
+    //output appropriate message
+    if(flag === 1){
+        message = "Age 21 or over."
+        $('p').text(message);
+    }
+    else{
+        message = "Below age 21."
+        $('p').text(message);
+    }
 
     }//end function calcAge()
 
