@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <title>Add Numbers</title>
     <script src="add.js"></script>
+    <link href="../css_js_projects/main.css" rel="stylesheet">
+    <style>
+       #mySum{
+           font-size: 20px;
+           font-weight: bold;
+       }
 
+    </style>
 </head>
 <body>
-<div>
+<div id="container">
+    <h1>Add Two Numbers</h1>
     <form>
         <label for="number1">Number 1:</label><input type="text" id="number1">
         <label for="number2">Number 2:</label><input type="text" id="number2">
 
         <input type="button" value = "go!" id="actionButton" />
-        <input type="reset" value="reset" />
-    </form>
-
-    <h4>The answer:</h4>
+        <input type="button" value="reset" id="clearNumbers" />
 
         <div id="mySum"></div>
+    </form>
+
+
 
 
 
 </div>
+
 
 <script src="add.js"></script>
 </body>
