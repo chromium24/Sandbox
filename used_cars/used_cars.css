@@ -1,0 +1,8 @@
+ul{
+    list-style: none;
+    background-color: lightblue;
+}
+
+ul li:first-child{
+    font-weight: bold;
+}
